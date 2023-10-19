@@ -1,0 +1,9 @@
+uvicorn[standard] 
+fastapi
+fasttext
+pymongo==3.11.0
+pytz
+pythainlp
+line-bot-sdk
+apscheduler
+requests

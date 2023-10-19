@@ -1,0 +1,32 @@
+version: '3.0'
+services:
+
+  khun-lee:
+    # platform: linux/x86_64
+    image: khun-lee
+    container_name: khun-lee
+    build:
+      context: .
+      dockerfile: build/Dockerfile.Khun-Lee
+    ports:
+      - 8001:8000
+  
+  khunlee-mongo:
+    ports:
+      - "27017:27017"
+    # environment:
+    #   MONGO_INITB_DATABASE: logs
+    #   MONGO_INITB_ROOT_USERNAME: heyu
+    #   MONGO_INITB_ROOT_PASSWORD: heyu
+    image: arm64v8/mongo #เฉพาะ mac
+    container_name: khunlee-mongo
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+          # nproc: 65535
+    volumes:
+      - "/mongo_khunlee:/data/db"
+      # - "/Users/heyug/Downloads/test/data_mongo:/data/db"
+      # - "/data-mongo:/data/db"
